@@ -1,10 +1,12 @@
 from sqlalchemy import Integer, Column, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 engine = create_engine(
     "mysql+pymysql://root:12345A@localhost:3306/company"
 )
 Base = declarative_base(bind=engine)
+Session = sessionmaker(bind=engine)
 
 
 class User(Base):
